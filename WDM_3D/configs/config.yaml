@@ -1,0 +1,20 @@
+lakefs:
+    data_repository: "fastmri-knee"
+    input_path: "test_3D" #training test
+    branch: "lakefs_branch_name" #fastmri_wdm_256x256x32_30mm
+    cache_path: "/cache/michaeljan.wehrli/fastmri"
+    s3_endpoint: "https://dbe-lakefs.dbe.unibas.ch:8000"
+    access_key: "xxx"
+    secret_key: "xxx"
+    ca_path: "/home/michaeljan.wehrli/dbe-object-storage-ca.crt"
+
+data:
+    train_test_already_split: True
+    folds:  # split the dataset into folds
+    k_fold: False # Trains all 5 folds when True
+    fold: 0 # If k_fold is False, only this fold will be trained
+    test_split: 0.1 # only used when train_test_already_split is false
+    img_tag: ".nii" # the tag to look for, for mri images
+    lbl_tag: "mask.nii" # the tag to look for in the labels
+    num_workers: 8
+    use_only_fraction_of_data: 1 # only takes a fraction of the available data for debugging, set 1 for normal
